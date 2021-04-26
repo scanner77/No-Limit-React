@@ -3,6 +3,7 @@ import '../Navbar/SignUp.css';
 import {db} from '../Firebase/firebase'
 import styled from 'styled-components'
 
+
 const StyledFormWrapper = styled.div`
 display:flex;
 justify-content: center;
@@ -28,6 +29,7 @@ height: 400px;
   align-content: center;
   flex-direction: column;
   justify-content: center;
+  color: white;
 `;
 
 const StyledInput = styled.input`
@@ -39,24 +41,12 @@ const StyledInput = styled.input`
   /* border: none; */
   background: #fff;
   font-size: 16px;
-  color: rgb(0, 0, 32);
+  color: white;
   outline: none;
   
 `;
 
-const StyledTextArea = styled.textarea`
- padding: 20px;
-  border-radius: 3px;
-  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.137); */
-  margin-bottom: 20px;
-  border: 1px solid lightgray;
-  /* border: none; */
-  background: #fff;
-  font-size: 16px;
-  color: rgb(0, 0, 32);
-  outline: none;
-  
-`;
+
 const StyledButton = styled.button`
    padding: 20px;
   border: none;
@@ -74,8 +64,8 @@ const StyledButton = styled.button`
 function SignUp() {
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
-    const [message, setMessage] = useState("");
-
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [loader, setLoader] = useState(false);
 
 
@@ -87,8 +77,9 @@ function SignUp() {
         db.collection("contacts").add({
             name: name,
             email: email,
-            message: message,
-        })
+            username: username,
+            password: password
+            })
             //right after user has submitted the form and firebase has stored it
             //you wanna ma ke sure that the user knows that its done
             .then(() => {
@@ -105,7 +96,8 @@ function SignUp() {
         //so we set the input fields to empty after submitting
         setName("");
         setEmail("");
-        setMessage("");
+        setUsername("");
+        setPassword("");
 
     }
     return (
@@ -120,18 +112,25 @@ function SignUp() {
                                  onChange = { (e) => setName(e.target.value)}
                     /> {/* As the state of name changes, we wanna run an arrow function
                 On the change we will set the empty state to the input*/}
-
+                  
                     <label>Email</label>
                     <StyledInput placeholder = "Email"
                                  value = {email} //{email} : what ever user types in
                                  onChange = { (e) => setEmail(e.target.value)}
                     />
 
-                    <label>Message</label>
-                    <StyledTextArea placeholder = "Message"
-                                    value = {message}
-                                    onChange = { (e) => setMessage(e.target.value)}
+                        <label>Username</label>
+                    <StyledInput placeholder = "Username"
+                                 value = {username} //{username} : what ever user types in
+                                 onChange = { (e) => setUsername(e.target.value)}
                     />
+
+                     <label>Password</label>
+                    <StyledInput placeholder = "Password"
+                                 value = {password} //{username} : what ever user types in
+                                 onChange = { (e) => setPassword(e.target.value)}
+                    />
+                   
 
                     <StyledButton type = "submit" style = {{background : loader
                             ? "#ccc" : "rgb(2,2,110"}}>Submit</StyledButton>

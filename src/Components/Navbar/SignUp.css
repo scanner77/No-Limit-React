@@ -5,10 +5,8 @@
     justify-content: center;
     align-items: center;
     margin: 50px 0;
-
 }
 
-/* Contact.js */
 .form {
     height: 300px;
     width: 300px;
@@ -17,14 +15,12 @@
     align-content: center;
     flex-direction: column;
     justify-content: center;
+    color: white;
+
 }
 
-/*.form > h1 {*/
-/*    margin-bottom: 30px;*/
-/*}*/
 
-.form > input,
-textarea {
+.form > input {
     padding: 20px;
     border-radius: 3px;
     /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.137); */
@@ -37,16 +33,10 @@ textarea {
     outline: none;
 }
 
-.form > input:focus,
-textarea:focus {
+.form > input:focus {
     border: 1px solid rgb(0, 0, 196);
 }
 
-.form > textarea {
-    height: 150px;
-    max-width: 400px;
-    min-height: 100px;
-}
 
 .form > label {
     padding-bottom: 10px;
